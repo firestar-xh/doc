@@ -16,9 +16,9 @@ export default defineUserConfig({
       description: "说明文档",
     },
   },
-
+  
   theme,
-
+  
   // Enable it with pwa
   // shouldPrefetch: false,
 });

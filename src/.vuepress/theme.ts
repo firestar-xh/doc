@@ -1,20 +1,18 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
-
 export default hopeTheme({
-  hostname: "https://manual.likeyou168.cn", // 修改为新的主机名
+  hostname: "https://manual.likeyou168.cn", 
 
   // author: {
   //   name: "Mr.Hu",
-  //   url: "https://", // 保持作者信息不变
   // },
 
-  logo: "/image/faicon.png", // 修改为新的 logo 地址
+  logo: "/image/faicon.png", 
 
-  repo: "likeyou8888/doc", // 保持 repo 信息不变
+  repo: "likeyou8888/doc", 
 
-  docsDir: "src", // 保持 docsDir 不变
+  docsDir: "src", 
 
   locales: {
     "/": {
@@ -48,26 +46,11 @@ export default hopeTheme({
     },
   },
 
-  encrypt: {
-    config: {
-      "/demo/encrypt.html": {
-        hint: "Password: 1234", // 密码提示
-        password: "1234", // 密码
-      },
-      "/zh/demo/encrypt.html": {
-        hint: "Password: 1234", // 密码提示
-        password: "1234", // 密码
-      },
-    },
-  },
-
-  // 启用的一些 markdown 功能
   markdown: {
     align: true,
     attrs: true,
     codeTabs: true,
     component: true,
-    demo: false,
     figure: true,
     gfm: true,
     imgLazyload: true,
@@ -95,21 +78,10 @@ export default hopeTheme({
     tasklist: true,
     vPre: true,
   },
-
+  
   plugins: {
-    // // 评论插件，使用 Giscus
-    // comment: {
-    //   provider: "Giscus",
-    //   repo: "vuepress-theme-hope/giscus-discussions",
-    //   repoId: "R_kgDOG_Pt2A",
-    //   category: "Announcements",
-    //   categoryId: "DIC_kwDOG_Pt2M4COD69",
-    // },
-
     components: {
       components: [
-        "Badge", 
-        "VPCard",
         "ArtPlayer",
         "PDF",
         "Share",
@@ -117,7 +89,22 @@ export default hopeTheme({
     },
 
     icon: {
-      prefix: "fa6-solid:", // 使用 FontAwesome 6 图标
+      prefix: "fa6-solid:",
+    },
+    
+    backToTop: {
+      threshold: 200
+    },
+
+    search: {
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+        '/zh/': {
+          placeholder: '搜索',
+        },
+      },
     },
   },
 });
