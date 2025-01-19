@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://manual.likeyou168.cn/sitemap.xml
+Sitemap: https://manual.likeyou168.cn/doc/sitemap.xml
