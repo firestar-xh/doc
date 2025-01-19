@@ -3,50 +3,56 @@ name: 部署文档
 on:
   push:
     branches:
-      - main
+      - main  # 当 `main` 分支有更新时触发
 
 permissions:
-  contents: write
+  contents: write  # 允许写入内容到仓库
 
 jobs:
   deploy-gh-pages:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest  # 在 Ubuntu 最新版本的 runner 上运行
     steps:
+      
+      # 1. Checkout 仓库代码
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-          # 如果你文档需要 Git 子模块，取消注释下一行
+          fetch-depth: 0  # 获取完整的 Git 历史记录
+          # 如果需要 Git 子模块，取消注释下一行
           # submodules: true
 
+      # 2. 设置 pnpm
       - name: 设置 pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9.15.3  # 设置 pnpm 版本
 
+      # 3. 设置 Node.js
       - name: 设置 Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: pnpm
+          node-version: 22  # 设置 Node.js 版本
+          cache: pnpm  # 启用 pnpm 缓存，提升安装效率
 
+      # 4. 安装项目依赖
       - name: 安装依赖
         run: |
-          corepack enable
-          pnpm install --frozen-lockfile
+          corepack enable  # 启用 corepack
+          pnpm install --frozen-lockfile  # 安装依赖，确保锁文件一致
 
+      # 5. 构建文档
       - name: 构建文档
         env:
-          NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
-          pnpm run docs:build
-          > src/.vuepress/dist/.nojekyll
+          NODE_OPTIONS: --max_old_space_size=8192  # 增加 Node.js 的内存限制
+        run: |
+          pnpm run docs:build  # 执行构建命令，生成静态文件
+          > src/.vuepress/dist/.nojekyll  # 生成 .nojekyll 文件，防止 Jekyll 处理
 
+      # 6. 部署文档到 GitHub Pages
       - name: 部署文档
         uses: JamesIves/github-pages-deploy-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}  # 使用 GitHub Token 进行身份验证
         with:
-          # 部署文档
-          branch: docPages
-          folder: src/.vuepress/dist
+          branch: docPages  # 目标分支，用于部署文档
+          folder: src/.vuepress/dist  # 部署的文件夹
