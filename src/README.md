@@ -11,8 +11,6 @@ actions:
     icon: signs-post
     type: primary
 features:
-
-  
   - title: VEX/105 15W×2
     icon: /image/15w.png
     link: ./vex15/

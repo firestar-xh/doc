@@ -3,7 +3,7 @@ import { hopeTheme } from 'vuepress-theme-hope';
 import theme from "./theme.js";
 
 export default defineUserConfig({
-  base: "/doc/",
+  base: "/",
   locales: {
     "/": {
       lang: "en-US",

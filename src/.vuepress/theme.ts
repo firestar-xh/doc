@@ -1,6 +1,7 @@
 import { hopeTheme } from "vuepress-theme-hope";
 import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
+
 export default hopeTheme({
   hostname: "https://manual.likeyou168.cn", 
 
@@ -78,14 +79,19 @@ export default hopeTheme({
     tasklist: true,
     vPre: true,
   },
-  
   plugins: {
     components: {
       components: [
-        "ArtPlayer",
         "PDF",
         "Share",
+        "ArtPlayer"
       ],
+      componentOptions: {
+        artPlayer: {
+          fastForward: true,
+          screenshot: true,
+        }
+     }
     },
 
     icon: {
