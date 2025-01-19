@@ -84,7 +84,8 @@ export default hopeTheme({
       components: [
         "PDF",
         "Share",
-        "ArtPlayer"
+        "ArtPlayer",
+        "VidStack"
       ],
       componentOptions: {
         artPlayer: {
